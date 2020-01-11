@@ -4,6 +4,7 @@ import { takeEvery, all, put } from "redux-saga/effects";
 
 const Actions = {
   signIn: 'user/signIn',
+  signOut: 'user/signOut',
   signInCompleted: 'user/signInCompleted',
   signInError: 'user/signInError'
 };
@@ -15,10 +16,14 @@ export type UserState =
 const initialState: UserState = { status: 'unauthorized', error: false };
 
 export const signIn = createAction<SignInForm>(Actions.signIn);
+export const signOut = createAction(Actions.signOut);
 const signInCompleted = createAction<User>(Actions.signInCompleted);
 const signInError = createAction(Actions.signInError);
 
 export const userReducer = createReducer<UserState>(initialState, {
+  [signOut.type]: (state: UserState, action) => {
+    return { status: "unauthorized", error: false };
+  },
   [signInCompleted.type]: (state: UserState, action) => {
     return { status: "authorized", data: action.payload };
   },
@@ -32,7 +37,7 @@ function* requestSignIn(action: any) {
   yield put(signInCompleted({ username: `${id}, ${password}` }));
 }
 
-export function* watchRequestSignIn() {
+function* watchRequestSignIn() {
   yield takeEvery(Actions.signIn, requestSignIn);
 }
 

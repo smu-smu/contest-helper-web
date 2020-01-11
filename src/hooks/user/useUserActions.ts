@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { signIn } from "../../modules/user";
+import { signIn, signOut } from "../../modules/user";
 import { useCallback } from "react";
 import { SignInForm } from "../../api";
 
@@ -10,5 +10,8 @@ export default function useUserActions() {
       dispatch(signIn(signInForm));
     }, [dispatch]
   );
-  return { requestSignIn };
+  const requestSignOut = useCallback(() => {
+    dispatch(signOut());
+  }, [dispatch]);
+  return { requestSignIn, requestSignOut };
 }

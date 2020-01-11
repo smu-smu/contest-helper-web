@@ -29,10 +29,16 @@ export const contestReducer = createReducer<ContentState>(initialState, {
 
 function* fetchContest() {
   yield put(fetchLoading());
-  yield put(fetchCompleted([]));
+  yield put(fetchCompleted([
+    {
+      id: "test",
+      title: "Hello",
+      description: "World"
+    }
+  ] as Contest[]));
 }
 
-export function* watchFetchRequested() {
+function* watchFetchRequested() {
   yield takeEvery(Actions.fetchRequested, fetchContest);
 }
 
