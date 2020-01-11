@@ -1,6 +1,7 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 import { SignUpForm } from "../api";
-import { put, takeEvery, all } from "redux-saga/effects";
+import { put, takeEvery, all, call } from "redux-saga/effects";
+import { signUp } from "../api/User";
 
 const Actions = {
   request: 'signUp/request',
@@ -28,8 +29,9 @@ export const signUpReducer = createReducer<SignUpState>(initialState, {
 });
 
 function* requestSignUp(action: any) {
-  const { id, password, username } = (action.payload as SignUpForm);
-  yield put(success());
+  const data = yield call(signUp, action.payload as SignUpForm);
+  console.log(data);
+  yield put(data ? success() : error());
 }
 
 function* watchRequestSignUp() {

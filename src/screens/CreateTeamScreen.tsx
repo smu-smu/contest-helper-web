@@ -36,7 +36,7 @@ export default function CreateTeamScreen() {
           createTeam.error &&
           <ErrorMessage msg="팀 생성이 실패하였습니다" />
         }
-        <CreateTeamForm contestId={ contestId } />
+        <CreateTeamForm contestId={ contestId } userId={ user.data.id } />
       </Col>
       <Col span={ 8 } />
     </Row>

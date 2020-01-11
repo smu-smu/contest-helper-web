@@ -9,8 +9,45 @@ import TeamsScreen from '../screens/TeamsScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import { RouterPath } from "../utils/constants";
 import CreateTeamScreen from '../screens/CreateTeamScreen';
+import firebase from 'firebase';
+import { requestNotificationPermission, saveTokenToLocal } from '../utils/notification';
 
 const { Header, Content } = Layout;
+
+firebase.initializeApp({
+  apiKey: "AIzaSyCYHsBGxW8cH7Sqi94hqT2OhgYSSzP6J9E",
+  authDomain: "contest-helper-d570a.firebaseapp.com",
+  databaseURL: "https://contest-helper-d570a.firebaseio.com",
+  projectId: "contest-helper-d570a",
+  storageBucket: "contest-helper-d570a.appspot.com",
+  messagingSenderId: "28027376772",
+  appId: "1:28027376772:web:78fb55a0e797092f60ded1",
+  measurementId: "G-KH6NGCW6E5"
+});
+
+const messaging = firebase.messaging();
+
+requestNotificationPermission(() => {
+  messaging.getToken().then((currentToken) => {
+    if (currentToken) {
+      saveTokenToLocal(currentToken);
+    }
+  });
+
+});
+
+messaging.onTokenRefresh(() => {
+  messaging.getToken().then((currentToken) => {
+    if (currentToken) {
+      saveTokenToLocal(currentToken);
+    }
+  });
+});
+
+messaging.onMessage((payload) => {
+  console.log(payload);
+  new Notification("Hello Notification");
+});
 
 const App: React.FC = () => {
 

@@ -1,6 +1,8 @@
 import { User, SignInForm } from "../api";
 import { createAction, createReducer } from "@reduxjs/toolkit";
-import { takeEvery, all, put } from "redux-saga/effects";
+import { takeEvery, all, put, call } from "redux-saga/effects";
+import { signIn as reqSignIn } from "../api/User";
+import { saveTokenToServer, loadTokenFromLocal } from "../utils/notification";
 
 const Actions = {
   signIn: 'user/signIn',
@@ -33,8 +35,16 @@ export const userReducer = createReducer<UserState>(initialState, {
 });
 
 function* requestSignIn(action: any) {
-  const { id, password } = (action.payload as SignInForm);
-  yield put(signInCompleted({ username: `${id}, ${password}` }));
+  const data = yield call(reqSignIn, action.payload as SignInForm);
+  if (data) {
+    const token = loadTokenFromLocal();
+    if (token) {
+      saveTokenToServer(token, data.userId);
+    }
+    yield put(signInCompleted({ username: data.name, id: data.userId }));
+  } else {
+    yield put(signInError());
+  }
 }
 
 function* watchRequestSignIn() {

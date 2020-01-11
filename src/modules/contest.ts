@@ -1,6 +1,7 @@
 import { Contest } from "../api";
 import { createReducer, createAction } from "@reduxjs/toolkit";
-import { all, takeEvery, put } from "redux-saga/effects";
+import { all, takeEvery, put, call } from "redux-saga/effects";
+import { getContests } from "../api/Contest";
 
 const Actions = {
   fetchRequested: 'contest/fetchRequested',
@@ -29,13 +30,8 @@ export const contestReducer = createReducer<ContentState>(initialState, {
 
 function* fetchContest() {
   yield put(fetchLoading());
-  yield put(fetchCompleted([
-    {
-      id: "test",
-      title: "Hello",
-      description: "World"
-    }
-  ] as Contest[]));
+  const data: Contest[] = yield call(getContests);
+  yield put(fetchCompleted(data));
 }
 
 function* watchFetchRequested() {

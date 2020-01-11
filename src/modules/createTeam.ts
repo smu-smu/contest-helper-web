@@ -1,6 +1,7 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 import { CreateTeamForm } from "../api";
-import { put, takeEvery, all } from "redux-saga/effects";
+import { put, takeEvery, all, call } from "redux-saga/effects";
+import { createTeam } from "../api/Team";
 
 const Actions = {
   request: 'createTeam/request',
@@ -28,8 +29,8 @@ export const createTeamReducer = createReducer<CreateTeamState>(initialState, {
 });
 
 function* requestCreateTeam(action: any) {
-  const { name, contact } = (action.payload as CreateTeamForm);
-  yield put(success());
+  const data = yield call(createTeam, action.payload as CreateTeamForm);
+  yield put(data ? success() : error());
 }
 
 function* watchRequestCreateTeam() {

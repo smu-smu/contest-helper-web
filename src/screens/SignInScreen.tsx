@@ -16,18 +16,18 @@ export default function SignInScreen() {
     return <Redirect to={ RouterPath.root } />;
   }
 
+  let msg = null;
+  if (user.status === 'unauthorized' && user.error) {
+    msg = <ErrorMessage msg="로그인에 실패하였습니다" />;
+  } else if (query.get("signUpSuccess")) {
+    msg = <SuccessMessage msg="회원가입에 성공하였습니다" />;
+  }
+
   return (
     <Row>
       <Col span={ 8 } />
       <Col span={ 8 } style={ { marginTop: 16 } }>
-        {
-          user.status === 'unauthorized' && user.error &&
-          <ErrorMessage msg="로그인에 실패하였습니다" />
-        }
-        {
-          query.get("signUpSuccess") &&
-          <SuccessMessage msg="회원가입에 성공하였습니다" />
-        }
+        { msg && msg }
         <SignInForm />
       </Col>
       <Col span={ 8 } />

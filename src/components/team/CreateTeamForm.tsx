@@ -5,9 +5,10 @@ import useCreateTeamActions from '../../hooks/createTeam/useCreateTeamActions';
 
 interface ICreateTeamFormProps extends FormComponentProps {
   contestId: string;
+  userId: string;
 }
 
-function CreateTeamForm({ form, contestId }: ICreateTeamFormProps) {
+function CreateTeamForm({ form, contestId, userId }: ICreateTeamFormProps) {
   const { requestCreateTeam } = useCreateTeamActions();
   const { getFieldDecorator } = form;
 
@@ -18,7 +19,7 @@ function CreateTeamForm({ form, contestId }: ICreateTeamFormProps) {
         return;
       }
       const { name, contact } = values;
-      requestCreateTeam({ contestId: contestId, name: name, contact: contact });
+      requestCreateTeam({ contestId: contestId, name: name, contact: contact, userId: userId });
     });
   };
 
