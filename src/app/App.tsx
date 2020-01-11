@@ -11,7 +11,7 @@ const { Header, Content } = Layout;
 const App: React.FC = () => {
 
   return (
-    <Router>
+    <Router basename={ process.env.PUBLIC_URL }>
       <Layout>
         <Header style={ { backgroundColor: "#fff" } }>
           <AppHeader />
@@ -27,7 +27,7 @@ const App: React.FC = () => {
           </Switch>
         </Content>
       </Layout>
-    </Router >
+    </Router>
   );
 };
 
