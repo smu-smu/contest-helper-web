@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/contest-helper-web/static/css/main.d1b05096.chunk.css",
-    "main.js": "/contest-helper-web/static/js/main.be09aa9d.chunk.js",
-    "main.js.map": "/contest-helper-web/static/js/main.be09aa9d.chunk.js.map",
+    "main.css": "/contest-helper-web/static/css/main.e1305a31.chunk.css",
+    "main.js": "/contest-helper-web/static/js/main.d1b57f65.chunk.js",
+    "main.js.map": "/contest-helper-web/static/js/main.d1b57f65.chunk.js.map",
     "runtime-main.js": "/contest-helper-web/static/js/runtime-main.8400f993.js",
     "runtime-main.js.map": "/contest-helper-web/static/js/runtime-main.8400f993.js.map",
-    "static/js/2.6597361e.chunk.js": "/contest-helper-web/static/js/2.6597361e.chunk.js",
-    "static/js/2.6597361e.chunk.js.map": "/contest-helper-web/static/js/2.6597361e.chunk.js.map",
+    "static/css/2.35f98baf.chunk.css": "/contest-helper-web/static/css/2.35f98baf.chunk.css",
+    "static/js/2.b44054d7.chunk.js": "/contest-helper-web/static/js/2.b44054d7.chunk.js",
+    "static/js/2.b44054d7.chunk.js.map": "/contest-helper-web/static/js/2.b44054d7.chunk.js.map",
     "index.html": "/contest-helper-web/index.html",
-    "precache-manifest.60a7298ec009a384fff6ebc3aba18258.js": "/contest-helper-web/precache-manifest.60a7298ec009a384fff6ebc3aba18258.js",
+    "precache-manifest.5d3eb2198f31950d81d08c61feb7ce40.js": "/contest-helper-web/precache-manifest.5d3eb2198f31950d81d08c61feb7ce40.js",
     "service-worker.js": "/contest-helper-web/service-worker.js",
-    "static/css/main.d1b05096.chunk.css.map": "/contest-helper-web/static/css/main.d1b05096.chunk.css.map",
-    "static/js/2.6597361e.chunk.js.LICENSE": "/contest-helper-web/static/js/2.6597361e.chunk.js.LICENSE",
-    "static/media/logo.svg": "/contest-helper-web/static/media/logo.5d5d9eef.svg"
+    "static/css/2.35f98baf.chunk.css.map": "/contest-helper-web/static/css/2.35f98baf.chunk.css.map",
+    "static/css/main.e1305a31.chunk.css.map": "/contest-helper-web/static/css/main.e1305a31.chunk.css.map",
+    "static/js/2.b44054d7.chunk.js.LICENSE": "/contest-helper-web/static/js/2.b44054d7.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.8400f993.js",
-    "static/js/2.6597361e.chunk.js",
-    "static/css/main.d1b05096.chunk.css",
-    "static/js/main.be09aa9d.chunk.js"
+    "static/css/2.35f98baf.chunk.css",
+    "static/js/2.b44054d7.chunk.js",
+    "static/css/main.e1305a31.chunk.css",
+    "static/js/main.d1b57f65.chunk.js"
   ]
 }
